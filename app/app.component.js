@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './hero.service', './heroes.component', './dashboard.components'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './hero.service', './heroes.component', './hero-detail.component', './dashboard.components'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', './hero.service', './heroes
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, hero_service_1, heroes_component_1, dashboard_components_1;
+    var core_1, router_1, hero_service_1, heroes_component_1, hero_detail_component_1, dashboard_components_1;
     var AppComponent;
     return {
         setters:[
@@ -26,6 +26,9 @@ System.register(['angular2/core', 'angular2/router', './hero.service', './heroes
             function (heroes_component_1_1) {
                 heroes_component_1 = heroes_component_1_1;
             },
+            function (hero_detail_component_1_1) {
+                hero_detail_component_1 = hero_detail_component_1_1;
+            },
             function (dashboard_components_1_1) {
                 dashboard_components_1 = dashboard_components_1_1;
             }],
@@ -38,6 +41,7 @@ System.register(['angular2/core', 'angular2/router', './hero.service', './heroes
                     core_1.Component({
                         selector: 'my-app',
                         template: "\n        <h1>{{title}}</h1>\n        <nav>\n            <a [routerLink]=\"['Heroes']\">Heroes</a>\n            <a [routerLink]=\"['Dashboard']\">Dashboard</a>\n        </nav>\n        <router-outlet></router-outlet>\n    ",
+                        styleUrls: ["app/app.component.css"],
                         directives: [router_1.ROUTER_DIRECTIVES],
                         providers: [hero_service_1.HeroService, router_1.ROUTER_PROVIDERS]
                     }),
@@ -52,7 +56,12 @@ System.register(['angular2/core', 'angular2/router', './hero.service', './heroes
                             name: 'Dashboard',
                             component: dashboard_components_1.DashboardComponent,
                             useAsDefault: true
-                        }
+                        },
+                        {
+                            path: '/detail/:id',
+                            name: 'HeroDetail',
+                            component: hero_detail_component_1.HeroDetailComponent
+                        },
                     ]), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
